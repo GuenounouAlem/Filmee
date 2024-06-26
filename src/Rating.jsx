@@ -1,5 +1,4 @@
 
-
 const Rating = ({ rating }) => {
     let bgColor;
     if (rating >= 7) {
