@@ -35,30 +35,30 @@ const useMovieService = () => {
     };
 
     // Handle "How good?" filters
-    if (activeFilters.includes('Weak')) {
+    if (activeFilters.good.includes('Weak')) {
       filterParams['vote_average.lte'] = 3.999;
-    } else if (activeFilters.includes('Mid')) {
+    } else if (activeFilters.good.includes('Mid')) {
       filterParams['vote_average.gte'] = 4;
       filterParams['vote_average.lte'] = 7;
-    } else if (activeFilters.includes('Peak')) {
+    } else if (activeFilters.good.includes('Peak')) {
       filterParams['vote_average.gte'] = 7;
     }
 
     // Handle "How Old?" filters
-    if (activeFilters.includes('Relics')) {
+    if (activeFilters.old.includes('Relics')) {
       filterParams['primary_release_date.lte'] = `${currentYear - 61}-12-31`;
-    } else if (activeFilters.includes('Boomers')) {
+    } else if (activeFilters.old.includes('Boomers')) {
       filterParams['primary_release_date.gte'] = `${currentYear - 60}-01-01`;
       filterParams['primary_release_date.lte'] = `${currentYear - 40}-12-31`;
-    } else if (activeFilters.includes('OGs')) {
+    } else if (activeFilters.old.includes('OGs')) {
       filterParams['primary_release_date.gte'] = `${currentYear - 40}-01-01`;
       filterParams['primary_release_date.lte'] = `${currentYear - 20}-12-31`;
-    } else if (activeFilters.includes('Zzz')) {
+    } else if (activeFilters.old.includes('Zzz')) {
       filterParams['primary_release_date.gte'] = `${currentYear - 20}-01-01`;
     }
 
     // Handle "What kind?" filters
-    const selectedGenres = activeFilters.filter(filter => Object.keys(genreMapping).includes(filter));
+    const selectedGenres = activeFilters.kind.filter(filter => Object.keys(genreMapping).includes(filter));
     if (selectedGenres.length > 0) {
       filterParams['with_genres'] = selectedGenres.map(genre => genreMapping[genre]).join(',');
     }
