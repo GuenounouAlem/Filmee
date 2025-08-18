@@ -70,8 +70,6 @@ const useMovieService = () => {
           ...filterParams
         }
       });
-      console.log(response.data);
-
       return response.data;
 
     } catch (error) {
@@ -81,18 +79,24 @@ const useMovieService = () => {
   };
 
   const getRandomMovie = async () => {
-    let randomMovie = null;
+      
+    
+    
+      let randomMovie = null;
 
 
-    try {
+    
       const movies1 = await discoverMovies();
-      const randomPage = Math.floor(Math.random() * movies1.total_pages);
+      const randomPage = Math.floor(Math.random() * Math.min(movies1.total_pages, 500)) + 1;
       const movies = await discoverMovies(randomPage);
 
       console.log(movies);
 
 
-      const randomMovie = movies.results[Math.floor(Math.random() * movies.results.length)];
+       randomMovie = movies.results[Math.floor(Math.random() * movies.results.length)];
+
+       console.log(randomMovie);
+       
 
 
       if (!randomMovie) {
@@ -116,8 +120,6 @@ const useMovieService = () => {
       }
     }
     return { discoverMovies, getRandomMovie };
-
-  }
   };
 
   export default useMovieService;
