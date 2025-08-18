@@ -70,6 +70,8 @@ const useMovieService = () => {
           ...filterParams
         }
       });
+      console.log(response.data.results);
+      
       return response.data.results;
     } catch (error) {
       console.error('Error fetching movies:', error);

@@ -4,7 +4,11 @@ import { createContext, useState } from "react";
 export const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
-  const [activeFilters, setActiveFilters] = useState([]);
+  const [activeFilters, setActiveFilters] = useState({
+    'good' : [],
+    'old' : [],
+    'kind' : []
+  });
 
   const toggleFilter = (filter) => {
     setActiveFilters((prevFilters) =>

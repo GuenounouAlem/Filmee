@@ -1,9 +1,10 @@
 
+import './Header.css'
 
 export default function Header() {
   return (
-    <div className="navbar bg-teal-950 text-orange-500 rounded-lg">
-      <a className="btn btn-ghost text-xl">Filmee</a>
+    <div className="navbar text-8xl text-blue-400 rounded-lg flex justify-center">
+      <a className=" text-2xl slackey-regular">Filmee</a>
     </div>
   );
 }

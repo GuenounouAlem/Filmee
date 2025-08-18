@@ -10,6 +10,8 @@ const Filter = () => {
     { name: 'What kind ?', filters: ['Action','Comedy','Thriller','Adventure','Science Fiction','Fantasy','Animation','Drama','Mystery','Romance']},
   ];
 
+     console.log(activeFilters);
+
   return (
     <div className="card w-full max-w-lg bg-base-100 shadow-xl">
       <div className="card-body">
@@ -31,6 +33,7 @@ const Filter = () => {
               ))}
             </div>
           </div>
+          
         ))}
         <div className="mt-4">
           <h4 className="font-bold">Active Filters:</h4>
