@@ -5,12 +5,12 @@ const Filter = () => {
   const { activeFilters, toggleFilter } = useContext(FilterContext);
 
   const categories = [
-    { name: 'How good ?', filters: ['Weak', 'Mid', 'Peak'] , key: 'good'},
+    { name: 'How good ?', filters: ['Weak', 'Mid', 'Peak'], key: 'good' },
     { name: 'How Old ?', filters: ['Relics', 'Boomers', 'OGs', 'Zzz'], key: 'old' },
-    { name: 'What kind ?', filters: ['Action','Comedy','Thriller','Adventure','Science Fiction','Fantasy','Animation','Drama','Mystery','Romance'], key : 'kind'},
+    { name: 'What kind ?', filters: ['Action', 'Comedy', 'Thriller', 'Adventure', 'Science Fiction', 'Fantasy', 'Animation', 'Drama', 'Mystery', 'Romance'], key: 'kind' },
   ];
 
-     console.log(activeFilters);
+  console.log(activeFilters);
 
   return (
     <div className="card w-full max-w-lg bg-base-100 shadow-xl">
@@ -24,20 +24,23 @@ const Filter = () => {
                 <button
                   key={filter}
                   onClick={() => toggleFilter(category.key, filter)}
-                  className={`btn ${
-                    activeFilters[category.key].includes(filter) ? 'btn-primary' : 'btn-outline'
-                  }`}
+                  className={`btn ${activeFilters[category.key].includes(filter) ? 'btn-primary' : 'btn-outline'
+                    }`}
                 >
                   {filter}
                 </button>
               ))}
             </div>
           </div>
-          
+
         ))}
         <div className="mt-4">
           <h4 className="font-bold">Active Filters:</h4>
-          <div>{activeFilters.length > 0 ? activeFilters.join(', ') : 'None'}</div>
+          {Object.entries(activeFilters).map(([key, value]) => (
+            <div key={key}>
+              {key}: {Array.isArray(value) ? value.join(', ') : value}
+            </div>
+          ))}
         </div>
       </div>
     </div>

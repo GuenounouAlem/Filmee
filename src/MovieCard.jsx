@@ -23,8 +23,8 @@ const MovieCard = () => {
 
   return (
     <div className="card w-full bg-base-100 shadow-xl">
-      {movie ? (
-        <>
+      {movie ? 
+        <div>
           <figure className="relative">
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -42,16 +42,17 @@ const MovieCard = () => {
               <p><strong>Director:</strong> {getDirectorName(movie.credits.crew)}</p>
               <p><strong>Main Actors:</strong> {getMainActors(movie.credits.cast)}</p>
             </div>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary" onClick={fetchRandomMovie}>
-                Gimme
-              </button>
-            </div>
+            
           </div>
-        </>
-      ) : (
+        </div>
+         : <></> }
+      
         <div className="card-body">
-          <h2 className="card-title">No Movie Yet</h2>
+          {
+            movie ? 
+            <h2 className="card-title">No Movie Yet</h2>
+            : <></> 
+          }
           {error ? <p className="text-red-500">{error}</p> : null}
           <div className="card-actions justify-end">
             <button className="btn btn-primary " onClick={fetchRandomMovie}>
@@ -59,7 +60,7 @@ const MovieCard = () => {
             </button>
           </div>
         </div>
-      )}
+      
     </div>
     
   );
