@@ -5,17 +5,18 @@ export const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
   const [activeFilters, setActiveFilters] = useState({
-    'good' : [],
-    'old' : [],
-    'kind' : []
+    good: [],
+    old: [],
+    kind: []
   });
 
-  const toggleFilter = (filter) => {
-    setActiveFilters((prevFilters) =>
-      prevFilters.includes(filter)
-        ? prevFilters.filter((f) => f !== filter)
-        : [...prevFilters, filter]
-    );
+  const toggleFilter = (filterType, value) => {
+    setActiveFilters(prev => ({
+      ...prev,
+      [filterType]: prev[filterType].includes(value)
+        ? prev[filterType].filter(item => item !== value)
+        : [...prev[filterType], value]
+    }));
   };
 
   return (

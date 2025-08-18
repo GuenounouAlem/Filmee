@@ -5,9 +5,9 @@ const Filter = () => {
   const { activeFilters, toggleFilter } = useContext(FilterContext);
 
   const categories = [
-    { name: 'How good ?', filters: ['Weak', 'Mid', 'Peak'] },
-    { name: 'How Old ?', filters: ['Relics', 'Boomers', 'OGs', 'Zzz'] },
-    { name: 'What kind ?', filters: ['Action','Comedy','Thriller','Adventure','Science Fiction','Fantasy','Animation','Drama','Mystery','Romance']},
+    { name: 'How good ?', filters: ['Weak', 'Mid', 'Peak'] , key: 'good'},
+    { name: 'How Old ?', filters: ['Relics', 'Boomers', 'OGs', 'Zzz'], key: 'old' },
+    { name: 'What kind ?', filters: ['Action','Comedy','Thriller','Adventure','Science Fiction','Fantasy','Animation','Drama','Mystery','Romance'], key : 'kind'},
   ];
 
      console.log(activeFilters);
@@ -23,9 +23,9 @@ const Filter = () => {
               {category.filters.map((filter) => (
                 <button
                   key={filter}
-                  onClick={() => toggleFilter(filter)}
+                  onClick={() => toggleFilter(category.key, filter)}
                   className={`btn ${
-                    activeFilters.includes(filter) ? 'btn-primary' : 'btn-outline'
+                    activeFilters[category.key].includes(filter) ? 'btn-primary' : 'btn-outline'
                   }`}
                 >
                   {filter}
